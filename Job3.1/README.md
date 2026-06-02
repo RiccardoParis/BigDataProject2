@@ -94,8 +94,20 @@ time hadoop jar /usr/lib/hadoop-mapreduce/hadoop-streaming.jar \
 #Hive
 time hive -f s3://nome_bucket_s3/scripts/job3.1/job3_1AWS.hql
 
+#SparkCore locale
+aws s3 cp s3://nome_bucket_s3/scripts/job3.1/job3_1_sparkAWS.py 
+time spark-submit \
+  --master "local[*]" \
+  job3_1_sparkAWS.py
+
 #SparkCore
 time spark-submit s3://nome_bucket_s3/scripts/job3.1/job3_1_sparkAWS.py
+
+#SparkSQ locale
+aws s3 cp s3://nome_bucket_s3/scripts/job3.1/job3_1_sparksqlAWS.py 
+time spark-submit \
+  --master "local[*]" \
+  job3_1_sparksqlAWS.py
 
 #SparkSQL
 time spark-submit s3://nome_bucket_s3/scripts/job3.1/job3_1_sparksqlAWS.py
