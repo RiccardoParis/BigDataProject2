@@ -129,3 +129,7 @@ hdfs dfsadmin -safemode leave
 #Risoluzione problema riscontrato con esecuzioni Hive 
 rm -rf metastore_db derby.log
 schematool -dbType derby -initSchema
+
+#A volte si verifica un problema con l'input ed è necessario rimuoverlo e ricaricarlo
+hdfs dfs -rm -f /user/hadoop/job3.1/input_ridotto/dataset_job_3_1_ridotto.csv
+hdfs dfs -put dataset_job_3_1_ridotto.csv /user/hadoop/job3.1/input_ridotto/
